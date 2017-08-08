@@ -100,4 +100,4 @@ ENV/
 
 .vscode/
 .idea/
-#*.sqlite3
+*.sqlite3
