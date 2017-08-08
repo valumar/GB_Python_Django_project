@@ -1,0 +1,24 @@
+{% extends "admin/_base.html" %}
+{% load static %}
+{% block title %}
+    Главная
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+
+        <div class="col-md-6">
+            Пользователи:
+        {% include 'admin/users_list.html' %}
+        </div>
+
+        <div class="col-md-6">
+            <form id="user_form" onclick="send_data({{ id }})">
+                {% csrf_token %}
+                {% include 'registration_form.html' %}
+                <input type="submit" value="Edit account">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
