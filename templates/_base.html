@@ -53,7 +53,7 @@
             <!-- Navigation -->
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active nav-item"><a href="#">На главную</a></li>
+                    <li class="active nav-item"><a href="/">На главную</a></li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-delay="0" data-close-others="false" href="#">Услуги <i
@@ -72,6 +72,7 @@
                                     aria-hidden="true">&times;</span></button>
                             <p>Сожалеем, вы неправильно ввели логин
                                 или пароль</p>
+                            <a href="/user/registration/" class="btn btn-info btn-sm">Регистрация</a>
                         </div>
                     {% endif %}
                     <form class="navbar-form navbar-right" method="post" action="/user/login/">
