@@ -13,11 +13,10 @@
         </div>
 
         <div class="col-md-6">
-            <form id="user_form" onclick="send_data({{ id }})">
-                {% csrf_token %}
+            <form id="user_form">
                 {% include 'registration_form.html' %}
-                <input type="submit" value="Edit account">
             </form>
+            <input type="submit" value="Edit account" onclick="send_data()">
         </div>
     </div>
 

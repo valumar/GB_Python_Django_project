@@ -53,7 +53,7 @@ function send_data() {
     var user_data = getFormData($form);
     // console.log('user_data = ', user_data);
     $.ajax({
-        url: 'create/user/' + prefix,
+        url: 'user/create/' + prefix,
         type: 'POST',
         data: user_data,
         dataType: 'json',
@@ -80,7 +80,7 @@ function send_data() {
 
 function fill_form(id){
     $.ajax({
-        url: 'get_user_form/' + id,
+        url: 'user/get_user_form/' + id,
         type: 'GET',
         dataType: 'json',
         success: function (response) {
@@ -95,6 +95,25 @@ function fill_form(id){
         }
     });
 }
+
+function delete_user(id){
+    $.ajax({
+        url: 'user/delete_form/' + id,
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            if (response.errors) {
+                console.log("errors = ", errors);
+            } else {
+                $('#users_list').html(response.html);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log('error =', error)
+        }
+    });
+}
+
 
 // DEMO-function TEMPLATE
 function demo_send_data(id){
