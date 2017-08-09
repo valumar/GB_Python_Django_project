@@ -103,3 +103,7 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+.table-hover tbody tr:hover td {
+    background: rgba(36, 255, 173, 0.25);
+}

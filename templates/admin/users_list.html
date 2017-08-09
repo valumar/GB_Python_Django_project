@@ -1,14 +1,29 @@
-<ul id="users_list">
+<table class="table table-hover table-striped table-condensed" id="users_list">
+    <thead>
+    <tr>
+        <th># id</th>
+        <th>Логин</th>
+        <th>E-mail</th>
+        <th>Действие</th>
+    </tr>
+    </thead>
+    <tbody>
     {% for user in users %}
-        <li>{{ user }}
-            <button type="button" class="btn btn-default" aria-label="Edit"
-                    onclick="fill_form({{ user.id }})">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-            </button>
-             <button type="button" class="btn btn-default" aria-label="Delete"
-                    onclick="delete_user({{ user.id }})">
-                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            </button>
-        </li>
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <button type="button" class="btn btn-default btn-warning btn-sm" aria-label="Edit"
+                        onclick="fill_form({{ user.id }})">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать
+                </button>
+                <button type="button" class="btn btn-default btn-danger btn-sm" aria-label="Delete"
+                        onclick="delete_user({{ user.id }})">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удалить
+                </button>
+            </td>
+        </tr>
     {% endfor %}
-</ul>
+    </tbody>
+</table>
