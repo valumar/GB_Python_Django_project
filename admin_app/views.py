@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import user_passes_test
 def main_view(request):
     users = User.objects.all()
     user_form = RegistrationForm()
-    return render(request, 'admin/index.html', {'users': users, 'form': user_form})
+    return render(request, 'myadmin/index.html', {'users': users, 'form': user_form})
 
 
 def delete_user(request, user_id):
@@ -36,7 +36,7 @@ def delete_user_form(request, user_id):
         user = get_object_or_404(User, id=user_id)
         user.delete()
         users = User.objects.all()
-        html = loader.render_to_string('admin/users_list.html', {'users': users}, request=request)
+        html = loader.render_to_string('myadmin/users_list.html', {'users': users}, request=request)
         data = {'errors': False, 'html': html}
         return JsonResponse(data)
     raise Http404
@@ -58,7 +58,7 @@ def create_user(request, user_id=None):
         if user.is_valid():
             user.save()
             users = User.objects.all()
-            html = loader.render_to_string('admin/users_list.html', {'users': users}, request=request)
+            html = loader.render_to_string('myadmin/users_list.html', {'users': users}, request=request)
             data = {'errors': False, 'html': html}
             return JsonResponse(data)
         else:
