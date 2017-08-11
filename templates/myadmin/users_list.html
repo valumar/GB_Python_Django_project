@@ -14,11 +14,11 @@
             <td>{{ user }}</td>
             <td>{{ user.email }}</td>
             <td>
-                <button type="button" class="btn btn-default btn-warning btn-sm" aria-label="Edit"
+                <button type="button" class="btn btn-warning btn-sm" aria-label="Edit"
                         onclick="fill_form({{ user.id }})">
                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать
                 </button>
-                <button type="button" class="btn btn-default btn-danger btn-sm" aria-label="Delete"
+                <button type="button" class="btn btn-danger btn-sm" aria-label="Delete"
                         onclick="delete_user({{ user.id }})">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удалить
                 </button>
