@@ -59,8 +59,9 @@
                            data-delay="0" data-close-others="false" href="#">Услуги <i
                                 class="fa fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Плановое ТО</a></li>
-                            <li><a href="#">Кузовной ремонт</a></li>
+                            {% for service in services %}
+                            <li><a href="">{{ service.name }}</a></li>
+                            {% endfor %}
                         </ul>
                     </li><!--//dropdown-->
                     <li class="nav-item"><a href="#">Контакты</a></li>

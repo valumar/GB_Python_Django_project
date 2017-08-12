@@ -8,3 +8,10 @@ urlpatterns = [
     url(r'user/get_user_form/(\d+)$', views.get_user_form),
     url(r'user/create/(\d*)$', views.create_user),
 ]
+
+urlpatterns += [
+    url(r'services/$', views.admin_list_services),
+    url(r'services/get_service_form/(\d+)$', views.get_service_form),
+    url(r'services/delete_form/(\d+)$', views.delete_service_form),
+    url(r'services/create/(\d*)$', views.create_service),
+]

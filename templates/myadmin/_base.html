@@ -62,8 +62,8 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Пользователи <span class="sr-only">(current)</span></a></li>
-{#            <li><a href="">Пользователи</a></li>#}
+            <li class="active"><a href="/my_admin/">Пользователи <span class="sr-only">(current)</span></a></li>
+            <li><a href="/my_admin/services/">Услуги</a></li>
 {#            <li><a href="#">Analytics</a></li>#}
 {#            <li><a href="#">Export</a></li>#}
           </ul>
@@ -76,8 +76,8 @@
         </div>
       </div>
     </div>
-
-    <!-- Bootstrap core JavaScript
+    {% block js %}
+     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/static/js/jquery-2.1.4.min.js"></script>
@@ -87,6 +87,6 @@
     <script src="/static/js/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/static/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="/static/js/create_user.js"></script>
-  </body>
+    {% endblock %}
+    </body>
 </html>
