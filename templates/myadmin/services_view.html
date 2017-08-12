@@ -1,0 +1,27 @@
+{% extends "myadmin/_base.html" %}
+{% load static %}
+{% block title %}
+    Главная
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+
+        <div class="col-md-7">
+            Услуги:
+        {% include 'myadmin/services_list.html' %}
+        </div>
+
+        <div class="col-md-5">
+            <form id="services_form">
+                {% include 'registration_form.html' %}
+            </form>
+            <input type="submit" value="Edit account" onclick="send_data()">
+        </div>
+    </div>
+
+{% endblock %}
+{% block js %}
+    {{   block.super }}
+        <script src="/static/js/create_service.js"></script>
+{% endblock %}
