@@ -1,0 +1,16 @@
+{% extends "myadmin/_base.html" %}
+{% block content %}
+    <h4>{{ service.name }}</h4>
+    <div class="row">
+        <div class="col-md-7">
+            {% include 'myadmin/service_detail_list.html' %}
+        </div>
+        <div class="col-md-5">
+            <form id="service_detail_form">
+                {% include 'registration_form.html' %}
+            </form>
+            <button type="button" class="btn btn-info" onclick="send_data()">Edit account</button>
+        </div>
+    </div>
+
+{% endblock %}

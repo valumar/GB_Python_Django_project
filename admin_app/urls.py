@@ -15,3 +15,8 @@ urlpatterns += [
     url(r'services/delete_form/(\d+)$', views.delete_service_form),
     url(r'services/create/(\d*)$', views.create_service),
 ]
+
+urlpatterns += [
+    url(r'(?P<pk>[0-9]+)/$', views.admin_service_detail, name='admin_service_detail'),
+
+]

@@ -13,9 +13,7 @@
             <td>{{ user.id }}</td>
             <td>{{ user }}</td>
             <td>{{ user.email }}</td>
-            <td>
-                               {% include 'myadmin/user_buttons.html' %}
-            </td>
+            <td>{% include 'myadmin/user_buttons.html' %}</td>
         </tr>
     {% endfor %}
     </tbody>

@@ -140,3 +140,20 @@ def create_service(request, service_id=None):
             errors = service.errors.as_json()
             return JsonResponse({'errors': errors})
     raise Http404
+
+
+# ---------------------------
+def admin_service_detail(request, pk):
+    services = MainService.objects.all()
+    service = get_object_or_404(MainService, pk=pk)
+    services_list = Service.objects.filter(category=pk)
+    services_form = ServiceForm(initial={'category': pk})
+    services_form.fields['category'].widget.attrs['disabled'] = True
+    return render(request,
+                  'myadmin/service_detail.html',
+                  {'nbar': '',
+                   'service': service,
+                   'services_list': services_list,
+                   'services': services,
+                   'form': services_form,
+                   })

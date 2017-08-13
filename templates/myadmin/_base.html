@@ -66,7 +66,7 @@
             <li class="{% if nbar == 'admin_services' %}active{% endif %}"><a href="/my_admin/services/">Услуги</a></li>
             <ul class="nav nav-second-level collapse in" aria-expanded="true" style>
                             {% for service in services %}
-                            <li><a href="{% url 'service_detail' pk=service.id  %}">{{ service.name }}</a></li>
+                            <li><a href="{% url 'admin_service_detail' pk=service.id  %}">{{ service.name }}</a></li>
                             {% endfor %}
 {#            <li><a href="#">Analytics</a></li>#}
 {#            <li><a href="#">Export</a></li>#}

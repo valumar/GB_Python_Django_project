@@ -1,0 +1,23 @@
+<table class="table table-hover table-striped table-condensed" id="services_list">
+    <thead>
+    <tr>
+        <th># id</th>
+        <th>Название услуги</th>
+        <th>Описание</th>
+        <th>Цена</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for line in services_list %}
+        <tr>
+            <td>{{ line.id }}</td>
+            <td>{{ line.name }}</td>
+            <td>{{ line.description }}</td>
+            <td>{{ line.price }}</td>
+            <td>
+                {% include 'myadmin/service_detail_buttons.html' %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
