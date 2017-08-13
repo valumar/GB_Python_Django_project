@@ -17,6 +17,6 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    url(r'(?P<pk>[0-9]+)/$', views.admin_service_detail, name='admin_service_detail'),
+    url(r'^services/(?P<pk>[0-9]+)/$', views.admin_service_detail, name='admin_service_detail'),
 
 ]

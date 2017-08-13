@@ -151,9 +151,10 @@ def admin_service_detail(request, pk):
     services_form.fields['category'].widget.attrs['disabled'] = True
     return render(request,
                   'myadmin/service_detail.html',
-                  {'nbar': '',
+                  {'nbar': pk,
                    'service': service,
                    'services_list': services_list,
                    'services': services,
                    'form': services_form,
                    })
+
