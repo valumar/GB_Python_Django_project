@@ -62,8 +62,8 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="/my_admin/">Пользователи <span class="sr-only">(current)</span></a></li>
-            <li><a href="/my_admin/services/">Услуги</a></li>
+            <li class="{% if nbar == 'admin_home' %}active{% endif %}"><a href="/my_admin/">Пользователи <span class="sr-only">(current)</span></a></li>
+            <li class="{% if nbar == 'admin_services' %}active{% endif %}"><a href="/my_admin/services/">Услуги</a></li>
 {#            <li><a href="#">Analytics</a></li>#}
 {#            <li><a href="#">Export</a></li>#}
           </ul>

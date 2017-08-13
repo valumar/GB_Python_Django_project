@@ -15,7 +15,12 @@ from django.contrib.auth.decorators import user_passes_test
 def main_view(request):
     users = User.objects.all()
     user_form = RegistrationForm()
-    return render(request, 'myadmin/index.html', {'users': users, 'form': user_form})
+    return render(request,
+                  'myadmin/index.html',
+                  {'users': users,
+                   'form': user_form,
+                   'nbar': 'admin_home',
+                   })
 
 
 def delete_user(request, user_id):
@@ -80,7 +85,12 @@ def create_user(request, user_id=None):
 def admin_list_services(request):
     services = MainService.objects.all()
     services_form = MainServiceForm()
-    return render(request, 'myadmin/services_view.html', {'services': services, 'form': services_form})
+    return render(request,
+                  'myadmin/services_view.html',
+                  {'services': services,
+                   'form': services_form,
+                   'nbar': 'admin_services',
+                   })
 
 
 # Заполнение формы услуг данными
