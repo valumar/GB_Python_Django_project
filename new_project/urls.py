@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^user/logout/$', logout),
     url(r'^user/registration/$', register_user),
     url(r'^my_admin/', include('admin_app.urls')),
+    url(r'^services/', include('main_app.urls')),
 ]

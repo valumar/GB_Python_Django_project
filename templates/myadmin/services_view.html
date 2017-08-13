@@ -1,7 +1,7 @@
 {% extends "myadmin/_base.html" %}
 {% load static %}
 {% block title %}
-    Главная
+    Услуги
 {% endblock %}
 
 {% block content %}
@@ -16,7 +16,7 @@
             <form id="services_form">
                 {% include 'registration_form.html' %}
             </form>
-            <input type="submit" value="Edit account" onclick="send_data()">
+            <button type="button" class="btn btn-info" onclick="send_data()">Edit account</button>
         </div>
     </div>
 

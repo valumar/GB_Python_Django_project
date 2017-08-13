@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+{% block content %}
+    <div class="min-height-600px bg-silver">
+        <div class="container pad45">
+            <div class="row">
+                <div class="services-wrapper">
+                    <div class="col-md-4">
+                        <div class="icon {{ service.bg_color }}">
+                            <span class="fa {{ service.fa_icon }}"></span>
+                        </div>
+                        <h4>{{ service.name }}</h4>
+                        <p>{{ service.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% for line in services_list %}
+                <div class="row">
+                    <div class="col-md-3">
+                        <p>
+                            {{ line.name }}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>
+                            {{ line.description }}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            {{ line.price }}
+                        </p>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

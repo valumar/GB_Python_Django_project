@@ -56,11 +56,11 @@
                     <li class="active nav-item"><a href="/">На главную</a></li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                           data-delay="0" data-close-others="false" href="#">Услуги <i
+                           data-delay="0" data-close-others="false" href="/services/">Услуги <i
                                 class="fa fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
                             {% for service in services %}
-                            <li><a href="">{{ service.name }}</a></li>
+                            <li><a href="{% url 'service_detail' pk=service.id  %}">{{ service.name }}</a></li>
                             {% endfor %}
                         </ul>
                     </li><!--//dropdown-->

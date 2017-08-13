@@ -15,11 +15,13 @@ from django.contrib.auth.decorators import user_passes_test
 def main_view(request):
     users = User.objects.all()
     user_form = RegistrationForm()
+    services = MainService.objects.all()
     return render(request,
                   'myadmin/index.html',
                   {'users': users,
                    'form': user_form,
                    'nbar': 'admin_home',
+                   'services': services
                    })
 
 
@@ -118,10 +120,6 @@ def delete_service_form(request, service_id):
 
 
 def create_service(request, service_id=None):
-    """
-    Создает Пользователя(User)
-    Или редактирует существующего, если указан  service_id
-    """
     if request.is_ajax():
         print('service_id = ', service_id)
         if not service_id:
@@ -141,5 +139,4 @@ def create_service(request, service_id=None):
         else:
             errors = service.errors.as_json()
             return JsonResponse({'errors': errors})
-
     raise Http404

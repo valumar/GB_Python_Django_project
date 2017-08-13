@@ -20,7 +20,8 @@
 							<div class="icon {{ service.bg_color }}">
 								<span class="fa {{ service.fa_icon }}"></span>
 							</div>
-							<h4>{{ service.name }}</h4>
+                            <a href="{% url 'service_detail' pk=service.id  %}"><h4>{{ service.name }}</h4></a>
+
 							<p>{{ service.description }}</p>
 						</div>
                     {% endfor %}
