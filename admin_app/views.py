@@ -194,7 +194,6 @@ def create_service_detail(request, category_id, service_id=None):
         if service.is_valid():
             service.save()
             services_list = Service.objects.filter(category=category_id)
-            # services_list = Service.objects.all()
             html = loader.render_to_string('myadmin/service_detail_list.html',
                                            {'services_list': services_list},
                                            request=request)
