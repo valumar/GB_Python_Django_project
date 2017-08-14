@@ -12,6 +12,7 @@ from django.template.context_processors import csrf
 from django.contrib.auth.decorators import user_passes_test
 
 
+# @user_passes_test(lambda u: u.is_superuser)
 def main_view(request):
     users = User.objects.all()
     user_form = RegistrationForm()

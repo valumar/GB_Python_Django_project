@@ -18,7 +18,9 @@ from django.contrib import admin
 from main_app.views import main_view
 from userManagement_app.views import login, logout, register_user
 
+
 urlpatterns = [
+    url('^accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', main_view),
     url(r'^user/login/$', login),
