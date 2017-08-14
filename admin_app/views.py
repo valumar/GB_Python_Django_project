@@ -148,7 +148,7 @@ def admin_service_detail(request, pk):
     service = get_object_or_404(MainService, pk=pk)
     services_list = Service.objects.filter(category=pk)
     services_form = ServiceForm(initial={'category': pk})
-    services_form.fields['category'].widget.attrs['disabled'] = True
+    # services_form.fields['category'].widget.attrs['disabled'] = True
     return render(request,
                   'myadmin/service_detail.html',
                   {'nbar': pk,
@@ -158,3 +158,49 @@ def admin_service_detail(request, pk):
                    'form': services_form,
                    })
 
+
+def get_service_detail_form(request, service_id):
+    if request.is_ajax():
+        service = get_object_or_404(Service, id=service_id)
+        service_detail_form = ServiceForm(instance=service)
+        context = {'form': service_detail_form, 'id': service_id}
+        context.update(csrf(request))
+        html = loader.render_to_string('registration_form.html', context)
+        data = {'errors': False, 'html': html}
+        return JsonResponse(data)
+    raise Http404
+
+
+def delete_service_detail_form(request, category_id, service_id):
+    if request.is_ajax():
+        service = get_object_or_404(Service, id=service_id)
+        service.delete()
+        services_list = Service.objects.filter(category=category_id)
+        html = loader.render_to_string('myadmin/service_detail_list.html', {'services_list': services_list}, request=request)
+        data = {'errors': False, 'html': html}
+        return JsonResponse(data)
+    raise Http404
+
+
+def create_service_detail(request, category_id, service_id=None):
+    if request.is_ajax():
+        print('service_id = ', service_id)
+        if not service_id:
+            print('Not service_id')
+            service = ServiceForm(request.POST)
+        else:
+            service = get_object_or_404(Service, id=service_id)
+            service = ServiceForm(request.POST or None, instance=service)
+        if service.is_valid():
+            service.save()
+            services_list = Service.objects.filter(category=category_id)
+            # services_list = Service.objects.all()
+            html = loader.render_to_string('myadmin/service_detail_list.html',
+                                           {'services_list': services_list},
+                                           request=request)
+            data = {'errors': False, 'html': html}
+            return JsonResponse(data)
+        else:
+            errors = service.errors.as_json()
+            return JsonResponse({'errors': errors})
+    raise Http404
