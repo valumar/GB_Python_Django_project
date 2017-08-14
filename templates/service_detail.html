@@ -8,12 +8,14 @@
                         <div class="icon {{ service.bg_color }}">
                             <span class="fa {{ service.fa_icon }}"></span>
                         </div>
+                    </div>
+                    <div class="col-md-4">
                         <h4>{{ service.name }}</h4>
                         <p>{{ service.description }}</p>
                     </div>
                 </div>
             </div>
-            {% for line in services_list %}
+            {% for line in service_list %}
                 <div class="row">
                     <div class="col-md-3">
                         <p>
@@ -22,7 +24,7 @@
                     </div>
                     <div class="col-md-6">
                         <p>
-                            {{ line.description }}
+                            {{ line.description|capfirst }}
                         </p>
                     </div>
                     <div class="col-md-3">
@@ -32,6 +34,28 @@
                     </div>
                 </div>
             {% endfor %}
+            {% if service_list.has_other_pages %}
+                <ul class="pagination">
+                    {% if service_list.has_previous %}
+                        <li><a href="?page={{ service_list.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in service_list.paginator.page_range %}
+                        {% if service_list.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+                            </li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if service_list.has_next %}
+                        <li><a href="?page={{ service_list.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
