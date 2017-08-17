@@ -59,8 +59,8 @@
                            data-delay="0" data-close-others="false" href="/services/">Услуги <i
                                 class="fa fa-angle-down"></i></a>
                         <ul class="dropdown-menu">
-                            {% for service in services %}
-                            <li><a href="{% url 'service_detail' pk=service.id  %}">{{ service.name }}</a></li>
+                            {% for serv in services %}
+                            <li><a href="{% url 'service_detail' service_id=serv.id  %}">{{ serv.name }}</a></li>
                             {% endfor %}
                         </ul>
                     </li><!--//dropdown-->

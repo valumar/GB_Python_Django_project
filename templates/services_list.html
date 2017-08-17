@@ -1,16 +1,17 @@
 {% extends "_base.html" %}
 {% block content %}
-    <div class="min-height-600px bg-silver">
+     <div class="min-height-600px bg-silver">
         <div class="container pad45">
             <div class="row">
                 <div class="services-wrapper">
-                    {% for service in services %}
+                    {% for serv in services %}
 						<div class="col-md-4">
-							<div class="icon {{ service.bg_color }}">
-								<span class="fa {{ service.fa_icon }}"></span>
+							<div class="icon {{ serv.bg_color }}">
+								<span class="fa {{ serv.fa_icon }}"></span>
 							</div>
-							<h4>{{ service.name }}</h4>
-							<p>{{ service.description }}</p>
+                            <a href="{% url 'service_detail'  service_id=serv.id  %}"><h4>{{ serv.name }}</h4></a>
+
+							<p>{{ serv.description }}</p>
 						</div>
                     {% endfor %}
                 </div>
