@@ -12,7 +12,7 @@ from django.template.context_processors import csrf
 from django.contrib.auth.decorators import user_passes_test
 
 
-# @user_passes_test(lambda u: u.is_superuser)
+@user_passes_test(lambda u: u.is_superuser)
 def main_view(request):
     users = User.objects.all()
     user_form = RegistrationForm()
@@ -25,13 +25,13 @@ def main_view(request):
                    'services': services
                    })
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def delete_user(request, user_id):
     user = get_object_or_404(User, id=user_id)
     user.delete()
     return HttpResponseRedirect('/my_admin/')
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def get_user_form(request, user_id):
     if request.is_ajax():
         user = get_object_or_404(User, id=user_id)
@@ -43,7 +43,7 @@ def get_user_form(request, user_id):
         return JsonResponse(data)
     raise Http404
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def delete_user_form(request, user_id):
     if request.is_ajax():
         user = get_object_or_404(User, id=user_id)
@@ -54,7 +54,7 @@ def delete_user_form(request, user_id):
         return JsonResponse(data)
     raise Http404
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def create_user(request, user_id=None):
     """
     Создает Пользователя(User)
@@ -85,6 +85,7 @@ def create_user(request, user_id=None):
 
 # Вьюшки для услуг
 # Вывод списка услуг
+@user_passes_test(lambda u: u.is_superuser)
 def admin_list_services(request):
     services = MainService.objects.all()
     services_form = MainServiceForm()
@@ -97,6 +98,7 @@ def admin_list_services(request):
 
 
 # Заполнение формы услуг данными
+@user_passes_test(lambda u: u.is_superuser)
 def get_service_form(request, service_id):
     if request.is_ajax():
         service = get_object_or_404(MainService, id=service_id)
@@ -108,7 +110,7 @@ def get_service_form(request, service_id):
         return JsonResponse(data)
     raise Http404
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def delete_service_form(request, service_id):
     if request.is_ajax():
         service = get_object_or_404(MainService, id=service_id)
@@ -119,7 +121,7 @@ def delete_service_form(request, service_id):
         return JsonResponse(data)
     raise Http404
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def create_service(request, service_id=None):
     if request.is_ajax():
         print('service_id = ', service_id)
@@ -144,6 +146,7 @@ def create_service(request, service_id=None):
 
 
 # ---------------------------
+@user_passes_test(lambda u: u.is_superuser)
 def admin_service_detail(request, pk):
     services = MainService.objects.all()
     service = get_object_or_404(MainService, pk=pk)
@@ -159,7 +162,7 @@ def admin_service_detail(request, pk):
                    'form': services_form,
                    })
 
-
+@user_passes_test(lambda u: u.is_superuser)
 def get_service_detail_form(request, service_id):
     if request.is_ajax():
         service = get_object_or_404(Service, id=service_id)
@@ -172,6 +175,7 @@ def get_service_detail_form(request, service_id):
     raise Http404
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def delete_service_detail_form(request, category_id, service_id):
     if request.is_ajax():
         service = get_object_or_404(Service, id=service_id)
@@ -183,6 +187,7 @@ def delete_service_detail_form(request, category_id, service_id):
     raise Http404
 
 
+@user_passes_test(lambda u: u.is_superuser)
 def create_service_detail(request, category_id, service_id=None):
     if request.is_ajax():
         print('service_id = ', service_id)
